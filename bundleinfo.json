@@ -1,0 +1,48 @@
+{
+  "materials": {
+    "health": {
+      "path": "assets/materials/health.mat",
+      "properties": {
+        "_Color": {
+          "value": [
+            0.122641481,
+            0.122641481,
+            0.122641481,
+            1.0
+          ],
+          "type": {
+            "Color": null
+          }
+        },
+        "_MainTex": {
+          "value": "",
+          "type": {
+            "Texture": null
+          }
+        },
+        "_Progress": {
+          "value": 1.0,
+          "type": {
+            "Float": null
+          }
+        }
+      }
+    }
+  },
+  "prefabs": {
+    "castlescene": "assets/prefabs/castlescene.prefab",
+    "forestscene": "assets/prefabs/forestscene.prefab",
+    "pones": "assets/prefabs/pones.prefab",
+    "sky": "assets/prefabs/sky.prefab",
+    "textscene": "assets/prefabs/textscene.prefab"
+  },
+  "bundleFiles": [
+    "F:/Games/Beat Saber VR/Beat Saber_Data/CustomWIPLevels/Last Stand/bundleWindows2021.vivify",
+    "F:/Games/Beat Saber VR/Beat Saber_Data/CustomWIPLevels/Last Stand/bundleWindows2019.vivify"
+  ],
+  "bundleCRCs": {
+    "_windows2021": 1988744899,
+    "_windows2019": 3612903666
+  },
+  "isCompressed": true
+}
