@@ -26,11 +26,17 @@ struct v2f {
 	float4 pos : POSITION;
 	float2 uv : TEXCOORD0;
 	float light : _LightColor;
+	UNITY_VERTEX_INPUT_INSTANCE_ID
+	UNITY_VERTEX_OUTPUT_STEREO
 };
 
 v2f vert (appdata_base v)
 {
 	v2f o;
+	UNITY_SETUP_INSTANCE_ID(v);
+	UNITY_INITIALIZE_OUTPUT(v2f, o);
+	UNITY_TRANSFER_INSTANCE_ID(v, o);
+	UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 	o.pos = UnityObjectToClipPos (v.vertex);
 	o.uv = TRANSFORM_UV(0);
 	 
@@ -39,6 +45,8 @@ v2f vert (appdata_base v)
  
 float4 frag( v2f i ) : SV_TARGET
 {
+	UNITY_SETUP_INSTANCE_ID(i);
+	UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(i);
 	float4 color = tex2D( _MainTex, i.uv);
 	color *= i.uv.x < _Progress;
 	return float4(color*_Color*_LightColor0);
