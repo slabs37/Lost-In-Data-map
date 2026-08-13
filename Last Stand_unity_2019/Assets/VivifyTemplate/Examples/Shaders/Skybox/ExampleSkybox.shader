@@ -1,4 +1,4 @@
-﻿Shader "Vivify/ExampleSkybox"
+Shader "Vivify/ExampleSkybox"
 {
     Properties
     {
@@ -8,6 +8,7 @@
     SubShader
     {
         Tags { "RenderType"="Opaque" }
+        ColorMask RGB
         Cull Front // Render only the back of triangles
 
         Pass
@@ -37,8 +38,9 @@
 
             v2f vert (appdata v)
             {
+                v2f o;
                 UNITY_SETUP_INSTANCE_ID(v);
-                UNITY_INITIALIZE_OUTPUT(v2f, v2f o);
+                UNITY_INITIALIZE_OUTPUT(v2f, o);
                 UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 
                 o.vertex = UnityObjectToClipPos(v.vertex);
@@ -53,8 +55,7 @@
 
                 float3 skyColor = _BaseColor;
                 skyColor += saturate(pow(1 - (dot(forward, up)), 4)) * _HorizonColor;
-                return float4(skyColor, Luminance(skyColor)*0);
-                
+                return float4(skyColor, Luminance(skyColor));
             }
             ENDCG
         }
